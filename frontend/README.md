@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# JS Master
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **JS Master**, a problem practice site for learning JavaScript from beginner to advanced levels. Practice problems and improve your JavaScript skills progressively through hands-on experience.
 
-## Available Scripts
+## Course Outline
 
-In the project directory, you can run:
+### Beginner Level
 
-### `npm start`
+1. **Basic Syntax and Variables**
+   - Declare variables and assign values
+   - Convert temperatures between Celsius and Fahrenheit
+   - Calculate the area of a rectangle
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Control Structures**
+   - Determine if a number is even or odd
+   - Find the largest of three numbers
+   - Print a multiplication table for a given number
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Functions**
+   - Create a function to check if a number is prime
+   - Write a function to calculate the factorial of a number
+   - Implement a function to reverse a string
 
-### `npm test`
+4. **Objects and Arrays**
+   - Create and access properties of an object
+   - Add, remove, and update elements in an array
+   - Find the sum of all elements in an array
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. **DOM Manipulation**
+   - Change the content of a paragraph element
+   - Create a dynamic list with user inputs
+   - Implement a simple form validation
 
-### `npm run build`
+### Intermediate Level
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+6. **Advanced Functions**
+   - Create a function that returns another function
+   - Implement a callback function
+   - Write a function using Promises
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+7. **Object-Oriented Programming**
+   - Create a class with methods and properties
+   - Implement inheritance in classes
+   - Create an object factory function
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+8. **Error Handling**
+   - Handle errors in a function with try...catch
+   - Create custom error messages
+   - Implement a function with proper error handling for user inputs
 
-### `npm run eject`
+9. **Web APIs**
+   - Fetch data from an API and display it on a webpage
+   - Store user preferences using LocalStorage
+   - Implement a search functionality with data from an API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+10. **Asynchronous JavaScript**
+    - Create a delay function using setTimeout
+    - Fetch and display data using async/await
+    - Handle multiple asynchronous operations
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Advanced Level
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+11. **Modules and Tooling**
+    - Import and export functions between modules
+    - Set up and bundle a project using Webpack
+    - Transpile ES6 code to ES5 using Babel
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+12. **Advanced DOM Manipulation**
+    - Implement a virtual DOM
+    - Optimize DOM updates for performance
+    - Use Intersection Observer API to lazy-load images
 
-## Learn More
+13. **Frameworks and Libraries**
+    - Create a simple component in React
+    - Manage state in a Vue application
+    - Implement routing in an Angular app
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+14. **Testing**
+    - Write unit tests for functions using Jest
+    - Create integration tests for a web application
+    - Implement end-to-end tests using Cypress
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+15. **Performance Optimization**
+    - Identify and fix memory leaks in a web app
+    - Optimize a function for better performance
+    - Use browser dev tools to profile and improve performance
 
-### Code Splitting
+16. **Security**
+    - Prevent XSS attacks in a web app
+    - Implement CSRF protection in forms
+    - Sanitize user inputs for secure coding
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Project-Based Learning
 
-### Analyzing the Bundle Size
+17. **Mini Projects**
+    - Build a to-do list application with add, remove, and edit features
+    - Create a weather app that fetches data from a weather API
+    - Develop a simple game like tic-tac-toe or snake
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+18. **Capstone Project**
+    - Develop a comprehensive project that integrates all the learned topics, such as a full-fledged e-commerce site
+    - Deploy the application and ensure it is scalable and maintainable
 
-### Making a Progressive Web App
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/js-master.git
+   cd js-master
