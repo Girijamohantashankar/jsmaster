@@ -101,9 +101,4 @@ Welcome to **JS Master**, a problem practice site for learning JavaScript from b
     - Develop a comprehensive project that integrates all the learned topics, such as a full-fledged e-commerce site
     - Deploy the application and ensure it is scalable and maintainable
 
-## Getting Started
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/js-master.git
-   cd js-master
