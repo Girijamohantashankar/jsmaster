@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./LandingPage.css";
 import certificateimage from "../assets/1_page-0001.jpg";
 import CustomLoader from './Loader'; 
+import { Link } from 'react-router-dom';
 
 function LandingPage() {
 
@@ -42,7 +43,7 @@ const Intro = () => (
   <div className="intro">
     <h2>Welcome to JS Master</h2>
     <p>JS Master is a problem practice site designed to help you learn JavaScript from beginner to advanced levels. Practice problems and improve your JavaScript skills progressively through hands-on experience.</p>
-    <a href="#get-started" className="btn">Get Started</a>
+    <Link to="/home" className="btn">Get Started</Link>
   </div>
 );
 

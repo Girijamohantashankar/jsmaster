@@ -1,9 +1,23 @@
 import React from 'react';
-import "../Components/"
+import "./Home.css";
 
 function Home() {
+
+
+
+
   return (
-    <div>Home</div>
+    <>
+    {/* Beginner Level */}
+      <div className='Beginner'>
+      <header>
+    <h1>JS Master</h1>
+  </header>
+      </div>
+
+
+    </>
+
   )
 }
 
