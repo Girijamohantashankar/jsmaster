@@ -1,0 +1,96 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; 
+}
+
+.LandingPage {
+  width: 100%;
+}
+
+header {
+  background: #333; 
+  color: #fff; 
+  padding: 10px 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.intro {
+  text-align: center;
+  margin: 40px 0; 
+}
+
+.intro h2 {
+  margin-bottom: 20px; 
+}
+
+.intro p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF; 
+  color: #fff; 
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #0056b3; 
+}
+.outline, .certificate {
+  background: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.outline h2, .certificate h2 {
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+.outline ul, .certificate ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.outline ul li, .certificate ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.certificate-preview {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.certificate-preview img {
+  max-width: 50%;
+  height: auto;
+  filter: blur(2px);
+  transition: filter 0.3s;
+}
+
+/* .certificate-preview img:hover {
+  filter: blur(2px);
+} */
+
+footer{
+  background-color: #333;
+  padding: 14px;
+}
+footer p{
+  color: #fff;
+  text-align: center;
+}

@@ -1,0 +1,51 @@
+
+
+.page {
+  display: grid;
+  min-height: 100vh;
+  background-color: rgb(0, 0, 0);
+}
+
+.page__box {
+  margin: auto;
+}
+
+.box {
+  position: relative;
+  width: 5em;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.box__item {
+  animation-name: move, color;
+  animation-duration: 1s, 2s;
+  animation-delay: calc(var(--box__item-nbr) * 0.1s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  background: #00EAFA;
+  position: absolute;
+  top: -100%;
+  left: calc(var(--box__item-nbr) * 0.5em);
+  height: 100%;
+  width: 0.5em;
+}
+
+@keyframes color {
+  75%, to {
+    background: #FA1000;
+  }
+}
+
+@keyframes move {
+  30% {
+    top: 0;
+  }
+  40% {
+    top: 50%;
+  }
+  100% {
+    top: 100%;
+  }
+}
