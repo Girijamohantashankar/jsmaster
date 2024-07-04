@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Home.css";
+import Sidebar from './Sidebar';
 
 function Home() {
 
@@ -8,13 +9,11 @@ function Home() {
 
   return (
     <>
-    {/* Beginner Level */}
-      <div className='Beginner'>
+      {/* Beginner Level */}
       <header>
-    <h1>JS Master</h1>
-  </header>
-      </div>
-
+        <h1>JS Master</h1>
+      </header>
+      <Sidebar />
 
     </>
 
