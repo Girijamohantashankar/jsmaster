@@ -1,0 +1,230 @@
+.home_container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+}
+
+.hero_section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+}
+
+.hero_image {
+    flex: 1;
+    position: relative;
+    height: 400px;
+    width: 50%;
+}
+
+.hero_content {
+    flex: 1;
+    padding: 20px;
+}
+
+.hero_content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero_content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.cta_button {
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cta_button:hover {
+    background-color: #6aabf7;
+}
+
+.courses_section {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.courses_section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    border-bottom: 3px solid #fff;
+    width: fit-content;
+}
+
+.course_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.course_item {
+    color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    flex: 1 1 calc(33% - 20px);
+    box-shadow: rgb(255 254 254 / 35%) 0px 5px 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course_item:hover {
+    transform: scale(1.05);
+    box-shadow: rgb(255 254 254 / 55%) 0px 10px 20px;
+}
+
+.certificate_section {
+    padding: 40px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.certificate_section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    border-bottom: 3px solid #fff;
+    width: fit-content;
+}
+
+.certificate_section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+
+
+.hero_image {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    width: 50%;
+}
+
+.slider_image {
+    position: relative;
+    height: 400px;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.hero_content {
+    flex: 1;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.hero_content h1 span,
+.hero_content p span,
+.course_item h3 span,
+.courses_section h2 span,
+.course_item p span,
+.certificate_section h2 span,
+.my_plans h2 span {
+    color: orangered;
+}
+
+.cta_button {
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.course_item p {
+    line-height: 2;
+}
+
+.certificate_image {
+    width: 600px;
+    height: 400px;
+    box-shadow: #FF5722 0px 5px 15px;
+}
+
+.my_plans {
+    text-align: center;
+    padding: 40px 20px;
+    
+}
+
+.my_plans h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #fff;
+    border-bottom: 4px solid #fff;
+}
+
+.plans_table_wrapper {
+    overflow-x: auto;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.plans_table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.plans_table th,
+.plans_table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.plans_table th {
+    font-weight: bold;
+}
+
+.plans_table tr:nth-child(even) {
+    background-color: transparent;
+}
+
+.check_icon {
+    font-size: 1.5rem;
+    color: green;
+}
+.check_icon.col_r{
+    color: #FF5722;
+}
+
+
+
+@media(max-width: 768px) {
+    .certificate_image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .plans_table th,
+    .plans_table td {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
