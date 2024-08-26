@@ -9,7 +9,12 @@ function BasicVariable() {
         <h1>JS Master</h1>
       </header>
       <Sidebar />
-      <div className='main_content_section'>BasicVariable</div>
+      <div className='main_content_section'>
+
+<h1>Girija Shankar Mohanta</h1>
+
+
+      </div>
     </>
 
   )
