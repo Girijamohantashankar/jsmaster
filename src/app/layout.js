@@ -2,6 +2,7 @@ import "./global.css";
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+
 export const metadata = {
   title: "JsMaster",
   description: "This is Js Master App",

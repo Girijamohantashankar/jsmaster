@@ -15,6 +15,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import DiscountNotification from './discountnotification/page';
 import ScrollButton from './scrollButton/page';
+import Link from 'next/link';
 
 
 const images = [
@@ -26,11 +27,6 @@ const images = [
 
 
 export default function Home() {
-
-  const [activeIndex, setActiveIndex] = useState(null);
-  const toggleFAQ = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -38,6 +34,12 @@ export default function Home() {
       once: true,
     });
   }, []);
+
+  const [activeIndex, setActiveIndex] = useState(null);
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
   const faqData = [
     {
       question: "What is JSMaster?",
@@ -67,7 +69,7 @@ export default function Home() {
 
   return (
     <div className="home_container">
-    <DiscountNotification />
+      <DiscountNotification />
       <div className="hero_section">
         <div className="hero_image">
           <Swiper
@@ -91,7 +93,9 @@ export default function Home() {
           <div className="hero_content">
             <h1>Wel<span>come</span> to <span>JSM</span>aster</h1>
             <p>Your journey to <span>mastering</span> JavaScr<span>ipt st</span>arts here.</p>
-            <button className="cta_button">Get Started</button>
+            <Link href="/signup">
+              <button className="cta_button">Get Started</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -221,8 +225,6 @@ export default function Home() {
       </div>
       <Footer />
       <ScrollButton />
-      
-
     </div>
   );
 }
