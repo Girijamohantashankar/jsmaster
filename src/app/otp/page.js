@@ -5,7 +5,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import "../../../styles/auth.css";
 import Loader from "../loader/page";
-import TokenValidation from '../TokenValidation';
 
 export default function VerifyOtp() {
   const router = useRouter();
@@ -102,7 +101,7 @@ export default function VerifyOtp() {
 
   return (
     <div className="Auth_container">
-    <TokenValidation redirectTo="/home" />
+
       {(loadingVerify || loadingResend) && <Loader />}
       <div className="Auth_header">
         <h1>Verify OTP</h1>

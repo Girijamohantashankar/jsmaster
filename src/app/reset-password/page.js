@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
@@ -18,6 +18,14 @@ export default function ResetPassword() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+
+        // Password validation
+        if (password.length < 6) {
+            setError("Password must be at least 6 characters long");
+            toast.error("Password must be at least 6 characters long");
+            setLoading(false);
+            return;
+        }
 
         if (password !== confirmPassword) {
             setError("Passwords do not match");
