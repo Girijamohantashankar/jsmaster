@@ -1,18 +1,27 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import "../../../styles/auth.css";
-import Loader from "../loader/page"; 
-import Link from 'next/link'; 
+import Loader from "../loader/page";
+import Link from 'next/link';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const router = useRouter();
+
+    useEffect(() => {
+        const savedEmail = localStorage.getItem('email');
+        const savedRememberMe = localStorage.getItem('rememberMe') === 'true';
+
+        if (savedEmail) setEmail(savedEmail);
+        setRememberMe(savedRememberMe);
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,8 +43,17 @@ export default function Login() {
                 toast.error(data.message);
             } else {
                 toast.success('Login successful!');
-                localStorage.setItem('token', data.token);
-                router.push('/home'); 
+                if (rememberMe) {
+                    localStorage.setItem('email', email);
+                    localStorage.setItem('rememberMe', 'true');
+                    localStorage.setItem('token', data.token);
+                } else {
+                    localStorage.removeItem('email');
+                    localStorage.setItem('rememberMe', 'false');
+                    sessionStorage.setItem('token', data.token);
+                }
+
+                router.push('/home');
             }
         } catch (error) {
             setError('An error occurred. Please try again.');
@@ -44,7 +62,6 @@ export default function Login() {
             setLoading(false);
         }
     };
-
 
     return (
         <div className="Auth_container">
@@ -74,6 +91,16 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
+                </div>
+                <div className="check_container">
+                    <label className='remember_check'>
+                        <input
+                            type="checkbox"
+                            checked={rememberMe}
+                            onChange={(e) => setRememberMe(e.target.checked)}
+                        />
+                        <span> Remember Me</span>
+                    </label>
                 </div>
                 <button type="submit" className="Auth_button" disabled={loading}>
                     {loading ? 'Logging in...' : 'Login'}

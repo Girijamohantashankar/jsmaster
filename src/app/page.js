@@ -18,6 +18,7 @@ import ScrollButton from './scrollButton/page';
 import Link from 'next/link';
 
 
+
 const images = [
   '/assets/banner1.png',
   '/assets/banner2.png',
