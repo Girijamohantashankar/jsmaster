@@ -2,8 +2,10 @@ import dbConnect from '../../app/lib/mongodb';
 import User from '../../app/models/User';
 import bcrypt from 'bcryptjs';
 import { sendOtpEmail } from '../../app/lib/mailer';
+import validate from 'deep-email-validator'
 
-const OTP_EXPIRY = 2 * 60 * 1000; 
+
+const OTP_EXPIRY = 2 * 60 * 1000;
 
 export default async function handler(req, res) {
     await dbConnect();
@@ -11,6 +13,10 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const { username, email, password, phone, gender } = req.body;
 
+        let valid = await validate(email)
+        if (!valid.valid) {
+            return res.status(400).json({ message: 'Give  email is not valid' })
+        }
         try {
             const existingUser = await User.findOne({ email });
             if (existingUser) {
