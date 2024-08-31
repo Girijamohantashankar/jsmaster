@@ -7,7 +7,6 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 });
-
 export const sendOtpEmail = async (email, otp) => {
   const emailTemplate = `
   <html>
@@ -69,7 +68,7 @@ export const sendOtpEmail = async (email, otp) => {
         <h1>JSMaster</h1>
       </div>
       <div class="content">
-        <p>Dear ${username},</p>
+        <p>Dear user,</p>
         <p>Thank you for registering with JSMaster. To complete your registration, please use the following OTP:</p>
         <div class="otp">${otp}</div>
         <p>This OTP is valid for 2 minutes. If you did not request this, please ignore this email.</p>
