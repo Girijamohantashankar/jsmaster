@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
         let valid = await validate(email)
         if (!valid.valid) {
-            return res.status(400).json({ message: 'Give  email is not valid' })
+            return res.status(400).json({ message: 'Given  email is not valid' })
         }
         try {
             const existingUser = await User.findOne({ email });

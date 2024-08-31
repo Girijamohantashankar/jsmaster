@@ -42,18 +42,23 @@ export default function Login() {
                 setError(data.message);
                 toast.error(data.message);
             } else {
-                toast.success('Login successful!');
-                if (rememberMe) {
-                    localStorage.setItem('email', email);
-                    localStorage.setItem('rememberMe', 'true');
-                    localStorage.setItem('token', data.token);
+                if (data.redirect && data.redirect === '/verify-otp') {
+                    toast.info(data.message);
+                    router.push(`/otp?page=${encodeURIComponent(email)}`);
                 } else {
-                    localStorage.removeItem('email');
-                    localStorage.setItem('rememberMe', 'false');
-                    sessionStorage.setItem('token', data.token);
-                }
+                    toast.success('Login successful!');
+                    if (rememberMe) {
+                        localStorage.setItem('email', email);
+                        localStorage.setItem('rememberMe', 'true');
+                        localStorage.setItem('token', data.token);
+                    } else {
+                        localStorage.removeItem('email');
+                        localStorage.setItem('rememberMe', 'false');
+                        sessionStorage.setItem('token', data.token);
+                    }
 
-                router.push('/home');
+                    router.push('/home');
+                }
             }
         } catch (error) {
             setError('An error occurred. Please try again.');
