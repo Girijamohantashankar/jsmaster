@@ -1,6 +1,8 @@
 import "./global.css";
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Navbar from "./navbar";
+
 
 
 export const metadata = {
@@ -12,7 +14,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <main> {children}</main>
+        <Navbar />
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );

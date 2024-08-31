@@ -80,7 +80,6 @@ export default function Home() {
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             loop={true}
             className="swiper-container"
-          
           >
             {images.map((src, index) => (
               <SwiperSlide key={index}>

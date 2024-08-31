@@ -1,7 +1,7 @@
 .home_container {
     font-family: Arial, sans-serif;
     color: #333;
-    padding: 20px;
+    /* padding: 20px; */
     overflow-x: hidden;
 }
 
@@ -143,7 +143,8 @@
 .course_item p span,
 .certificate_section h2 span,
 .my_plans h2 span,
-.testimonial_container h2 span,.faq_container h2 span {
+.testimonial_container h2 span,
+.faq_container h2 span {
     color: orangered;
 }
 
@@ -353,17 +354,33 @@
         max-width: 800px;
         margin: 0 auto 20px;
     }
-    .faq_question h3{
+
+    .faq_question h3 {
         font-size: 15px;
     }
-    .testimonial_quote{
+
+    .testimonial_quote {
         font-size: 15px;
-    }.testimonial_item{
+    }
+
+    .testimonial_item {
         height: auto;
     }
-    .discount_notification p,.hero_content p,.certificate_section p{
+
+    .discount_notification p,
+    .hero_content p,
+    .certificate_section p {
         font-size: 12px;
-    }.hero_content h1{
+    }
+
+    .hero_content h1 {
         font-size: 20px;
+    }
+
+    .course_list {
+        display: inline-block;
+        
+    }.course_item{
+        margin-bottom: 20px;
     }
 }
