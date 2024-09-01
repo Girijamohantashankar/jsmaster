@@ -37,7 +37,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 8px;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -56,6 +56,7 @@ body {
     list-style: none;
     gap: 2rem;
     align-items: center;
+    margin: 6px;
 }
 
 .navbar-links li a {

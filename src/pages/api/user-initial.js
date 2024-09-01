@@ -15,17 +15,21 @@ export default async function handler(req, res) {
         }
 
         try {
-
             const decoded = jwt.verify(token, JWT_SECRET);
             const user = await User.findById(decoded.id);
 
             if (!user) {
                 return res.status(404).json({ message: 'User not found' });
             }
-            const userInitial = user.username.charAt(0).toUpperCase();
 
+            const userInitial = user.username.charAt(0).toUpperCase();
             res.status(200).json({ userInitial });
+
         } catch (error) {
+            if (error.name === 'TokenExpiredError') {
+                console.error('JWT token expired:', error);
+                return res.status(401).json({ message: 'Token expired. Please log in again.' });
+            }
             console.error('Error fetching user:', error);
             res.status(500).json({ message: 'Server error' });
         }

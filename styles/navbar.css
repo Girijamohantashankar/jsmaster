@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 8px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -22,6 +22,7 @@
     list-style: none;
     gap: 2rem;
     align-items: center;
+    margin: 6px;
 }
 
 .navbar-links li a {

@@ -1,8 +1,7 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
 import "../../styles/navbar.css";
 
 export default function Navbar() {
@@ -26,8 +25,17 @@ export default function Navbar() {
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                const data = await response.json();
-                if (response.ok) {
+
+                if (response.status === 401) {
+                    const data = await response.json();
+                    if (data.message === 'Token expired. Please log in again.') {
+                        localStorage.removeItem('token');
+                        router.push('/login'); 
+                    } else {
+                        setUserInitial(null);
+                    }
+                } else if (response.ok) {
+                    const data = await response.json();
                     setUserInitial(data.userInitial);
                 } else {
                     setUserInitial(null);
@@ -55,7 +63,7 @@ export default function Navbar() {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        setUserInitial(null); 
+        setUserInitial(null);
         router.push('/login');
     };
 
