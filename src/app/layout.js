@@ -1,7 +1,8 @@
 import "./global.css";
 import 'swiper/css';
 import 'swiper/css/pagination';
-import Navbar from "./navbar";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 
@@ -14,7 +15,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navbar />
         <main>
           {children}
         </main>

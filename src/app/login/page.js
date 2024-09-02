@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../../../styles/auth.css";
 import Loader from "../loader/page";
 import Link from 'next/link';
+import Navbar from '../navbar';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -47,10 +48,11 @@ export default function Login() {
                     router.push(`/otp?page=${encodeURIComponent(email)}`);
                 } else {
                     toast.success('Login successful!');
+                    localStorage.setItem('token', data.token);
                     if (rememberMe) {
                         localStorage.setItem('email', email);
                         localStorage.setItem('rememberMe', 'true');
-                        localStorage.setItem('token', data.token);
+
                     } else {
                         localStorage.removeItem('email');
                         localStorage.setItem('rememberMe', 'false');
@@ -69,56 +71,59 @@ export default function Login() {
     };
 
     return (
-        <div className="Auth_container">
-            {loading && <Loader />}
-            <div className="Auth_header">
-                <h1>Login</h1>
-            </div>
-            <form onSubmit={handleSubmit} className="Auth_form">
-                <div className="Auth_inputGroup">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
+        <>
+            <Navbar />
+            <div className="Auth_container">
+                {loading && <Loader />}
+                <div className="Auth_header">
+                    <h1>Login</h1>
                 </div>
-                <div className="Auth_inputGroup">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="check_container">
-                    <label className='remember_check'>
+                <form onSubmit={handleSubmit} className="Auth_form">
+                    <div className="Auth_inputGroup">
+                        <label htmlFor="email">Email</label>
                         <input
-                            type="checkbox"
-                            checked={rememberMe}
-                            onChange={(e) => setRememberMe(e.target.checked)}
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
-                        <span> Remember Me</span>
-                    </label>
-                </div>
-                <button type="submit" className="Auth_button" disabled={loading}>
-                    {loading ? 'Logging in...' : 'Login'}
-                </button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-            </form>
-            <p className="Auth_footer">
-                Do not have an account? <Link href="/signup">Sign up</Link>
-            </p>
-            <p className="Auth_footer">
-                <Link href="/forgot-password" className='forgot_link'>Forgot Password?</Link>
-            </p>
-            <ToastContainer />
-        </div>
+                    </div>
+                    <div className="Auth_inputGroup">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="check_container">
+                        <label className='remember_check'>
+                            <input
+                                type="checkbox"
+                                checked={rememberMe}
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                            />
+                            <span> Remember Me</span>
+                        </label>
+                    </div>
+                    <button type="submit" className="Auth_button" disabled={loading}>
+                        {loading ? 'Logging in...' : 'Login'}
+                    </button>
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                </form>
+                <p className="Auth_footer">
+                    Do not have an account? <Link href="/signup">Sign up</Link>
+                </p>
+                <p className="Auth_footer">
+                    <Link href="/forgot-password" className='forgot_link'>Forgot Password?</Link>
+                </p>
+                <ToastContainer />
+            </div>
+        </>
     );
 }

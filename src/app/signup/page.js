@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../../../styles/auth.css";
 import Loader from "../loader/page";
 import Link from "next/link";
+import Navbar from "../navbar";
 
 
 const validateEmail = (email) => {
@@ -95,86 +96,91 @@ export default function Signup() {
 
 
     return (
-        <div className="Auth_container">
-            {loading && <Loader />}
-            <div className="Auth_header">
-                <h1>Signup</h1>
+        <>
+            <Navbar />
+            <div className="Auth_container">
+                {loading && <Loader />}
+
+                <div className="Auth_header">
+                    <h1>Signup</h1>
+                </div>
+                <form onSubmit={handleSubmit} className="Auth_form">
+                    <div className="Auth_inputGroup">
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value={formData.username}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="Auth_inputGroup">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                        {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+                    </div>
+                    <div className="Auth_inputGroup">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="Auth_inputGroup">
+                        <label htmlFor="phone">Phone Number</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            required
+                        />
+                        {phoneError && <p style={{ color: 'red' }}>{phoneError}</p>}
+
+                    </div>
+                    <div className="Auth_inputGroup">
+                        <label htmlFor="gender">Gender</label>
+                        <select
+                            id="gender"
+                            name="gender"
+                            value={formData.gender}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <button type="submit" className="Auth_button" disabled={loading}>
+                        {loading ? "Signing up..." : "Signup"}
+                    </button>
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                    {success && <p style={{ color: 'green' }}>{success}</p>}
+                    <p>
+                        I have an account{' '}
+                        <Link href="/login" className="Auth_link">Login here</Link>
+
+                    </p>
+
+                </form>
+                <ToastContainer />
             </div>
-            <form onSubmit={handleSubmit} className="Auth_form">
-                <div className="Auth_inputGroup">
-                    <label htmlFor="username">Username</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={formData.username}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="Auth_inputGroup">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                    {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
-                </div>
-                <div className="Auth_inputGroup">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="Auth_inputGroup">
-                    <label htmlFor="phone">Phone Number</label>
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                    />
-                    {phoneError && <p style={{ color: 'red' }}>{phoneError}</p>}
+        </>
 
-                </div>
-                <div className="Auth_inputGroup">
-                    <label htmlFor="gender">Gender</label>
-                    <select
-                        id="gender"
-                        name="gender"
-                        value={formData.gender}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value="">Select</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-                <button type="submit" className="Auth_button" disabled={loading}>
-                    {loading ? "Signing up..." : "Signup"}
-                </button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                {success && <p style={{ color: 'green' }}>{success}</p>}
-                <p>
-                    I have an account{' '}
-                    <Link href="/login" className="Auth_link">Login here</Link>
-
-                </p>
-
-            </form>
-            <ToastContainer />
-        </div>
     );
 }

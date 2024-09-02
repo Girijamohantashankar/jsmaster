@@ -16,6 +16,7 @@ import 'swiper/css/autoplay';
 import DiscountNotification from './discountnotification/page';
 import ScrollButton from './scrollButton/page';
 import Link from 'next/link';
+import Navbar from './navbar';
 
 
 
@@ -70,6 +71,7 @@ export default function Home() {
 
   return (
     <div className="home_container">
+      <Navbar />
       <DiscountNotification />
       <div className="hero_section">
         <div className="hero_image">
