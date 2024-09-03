@@ -1,3 +1,8 @@
 {
-  "/community/page": "app/community/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/login/page": "app/login/page.js",
+  "/community/page": "app/community/page.js",
+  "/home/page": "app/home/page.js",
+  "/contact/page": "app/contact/page.js"
 }
