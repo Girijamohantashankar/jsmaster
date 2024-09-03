@@ -3,5 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/api/user-initial": "pages/api/user-initial.js",
-  "/api/showposts": "pages/api/showposts.js"
+  "/api/allposts": "pages/api/allposts.js",
+  "/api/getpostanswers": "pages/api/getpostanswers.js"
 }

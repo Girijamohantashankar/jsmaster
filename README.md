@@ -1,104 +1,48 @@
-# JS Master
+# JSMaster
 
-Welcome to **JS Master**, a problem practice site for learning JavaScript from beginner to advanced levels. Practice problems and improve your JavaScript skills progressively through hands-on experience.
+JSMaster is a comprehensive web platform designed for JavaScript enthusiasts to learn, practice, and collaborate on JavaScript problems. This platform features professional course pages, community posts, and real-time code challenges, making it perfect for both beginners and advanced developers to enhance their JavaScript skills.
 
-## Course Outline
+## Features
 
-### Beginner Level
+- **Course Pages:** Access structured and professional JavaScript courses with exercises and solutions.
+- **Community Posts:** Post your JavaScript-related issues and collaborate with others to find solutions.
+- **OTP-based Authentication:** Secure login with OTP verification and JWT tokens.
+- **Responsive Design:** Fully responsive and optimized for all devices.
+- **Firebase Integration:** Store and retrieve user data and images with Firebase.
+- **Token-based Redirection:** Users are redirected to the homepage if a valid token exists.
+- **Dynamic Content Rendering:** Show and hide answers dynamically based on user interaction.
 
-1. **Basic Syntax and Variables**
-   - Declare variables and assign values
-   - Convert temperatures between Celsius and Fahrenheit
-   - Calculate the area of a rectangle
+## Technologies Used
 
-2. **Control Structures**
-   - Determine if a number is even or odd
-   - Find the largest of three numbers
-   - Print a multiplication table for a given number
+- **Frontend:**
+  - Next.js
+  - React
+  - CSS Modules
 
-3. **Functions**
-   - Create a function to check if a number is prime
-   - Write a function to calculate the factorial of a number
-   - Implement a function to reverse a string
+- **Backend:**
+  - Node.js
+  - MongoDB
+  - JWT for authentication
 
-4. **Objects and Arrays**
-   - Create and access properties of an object
-   - Add, remove, and update elements in an array
-   - Find the sum of all elements in an array
+- **Storage:**
+  - Firebase for image and data storage
 
-5. **DOM Manipulation**
-   - Change the content of a paragraph element
-   - Create a dynamic list with user inputs
-   - Implement a simple form validation
+- **Deployment:**
+  - Vercel for continuous deployment and hosting
 
-### Intermediate Level
+## Getting Started
 
-6. **Advanced Functions**
-   - Create a function that returns another function
-   - Implement a callback function
-   - Write a function using Promises
+### Prerequisites
 
-7. **Object-Oriented Programming**
-   - Create a class with methods and properties
-   - Implement inheritance in classes
-   - Create an object factory function
+Ensure you have the following installed on your local machine:
 
-8. **Error Handling**
-   - Handle errors in a function with try...catch
-   - Create custom error messages
-   - Implement a function with proper error handling for user inputs
+- **Node.js** (v14 or later)
+- **MongoDB** (local or cloud instance)
+- **Firebase Account** (for storage and authentication)
 
-9. **Web APIs**
-   - Fetch data from an API and display it on a webpage
-   - Store user preferences using LocalStorage
-   - Implement a search functionality with data from an API
+### Installation
 
-10. **Asynchronous JavaScript**
-    - Create a delay function using setTimeout
-    - Fetch and display data using async/await
-    - Handle multiple asynchronous operations
-
-### Advanced Level
-
-11. **Modules and Tooling**
-    - Import and export functions between modules
-    - Set up and bundle a project using Webpack
-    - Transpile ES6 code to ES5 using Babel
-
-12. **Advanced DOM Manipulation**
-    - Implement a virtual DOM
-    - Optimize DOM updates for performance
-    - Use Intersection Observer API to lazy-load images
-
-13. **Frameworks and Libraries**
-    - Create a simple component in React
-    - Manage state in a Vue application
-    - Implement routing in an Angular app
-
-14. **Testing**
-    - Write unit tests for functions using Jest
-    - Create integration tests for a web application
-    - Implement end-to-end tests using Cypress
-
-15. **Performance Optimization**
-    - Identify and fix memory leaks in a web app
-    - Optimize a function for better performance
-    - Use browser dev tools to profile and improve performance
-
-16. **Security**
-    - Prevent XSS attacks in a web app
-    - Implement CSRF protection in forms
-    - Sanitize user inputs for secure coding
-
-### Project-Based Learning
-
-17. **Mini Projects**
-    - Build a to-do list application with add, remove, and edit features
-    - Create a weather app that fetches data from a weather API
-    - Develop a simple game like tic-tac-toe or snake
-
-18. **Capstone Project**
-    - Develop a comprehensive project that integrates all the learned topics, such as a full-fledged e-commerce site
-    - Deploy the application and ensure it is scalable and maintainable
-
-
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/jsmaster.git
+   cd jsmaster

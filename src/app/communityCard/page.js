@@ -40,7 +40,7 @@ export default function Modal({ onClose, onAddPost }) {
             setUserEmail('');
         }
     }, []);
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!title || !description || !image || !userEmail) return;
@@ -67,10 +67,10 @@ export default function Modal({ onClose, onAddPost }) {
             if (response.ok) {
                 const postData = await response.json();
                 onAddPost(postData.post);
+                onClose();
             } else {
                 console.error('Failed to save post data');
             }
-
             setUploading(false);
             onClose();
         } catch (error) {

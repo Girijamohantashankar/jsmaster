@@ -138,13 +138,27 @@
 
 
 .post_card {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
+    background: #181818;
+    border: 1px solid #9E9E9E;
     border-radius: 5px;
     padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgb(204 0 205 / 96%);
     transition: transform 0.3s;
+    color: #fff;
     margin: auto;
+}
+
+.image_wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.image_wrapper Image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .post_card:hover {
@@ -194,4 +208,99 @@
 
 .modal_content h2 {
     color: #fff;
+}
+
+.post_card button {
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #9d5135;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.post_card button:hover {
+    background-color: #553124;
+}
+
+.post_card button.delete_button {
+    background-color: #f00;
+    margin-left: 10px;
+}
+
+.post_card button.delete_button:hover {
+    background-color: rgb(143, 14, 14);
+}
+
+.image_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.image_modal_content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal_image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.close_modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.answer_section {
+    margin-top: 10px;
+}
+
+.line_clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.line_clamp.expanded {
+    display: initial;
+    -webkit-line-clamp: initial;
+    -webkit-box-orient: initial;
+    overflow: hidden;
+    text-overflow: initial;
+
+}
+
+.readmore_btn_color {
+    color: #0070f3;
+    cursor: pointer;
+}
+
+.readmore_btn_color:hover {
+    color: #f00;
+
+}
+
+@media(max-width: 768px) {
+    .post_card .Skeleton {
+        width: 70vw;
+        height: 100%;
+    }
 }
