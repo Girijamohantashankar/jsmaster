@@ -78,49 +78,51 @@ export default function Contact() {
                     </div>
                 </section>
 
-                <section className="contact_form">
-                    <h2><span className="or">S</span>end <span className="or">Us</span> a <span className="or">Mess</span>age</h2>
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="name">Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                        />
+                <section className="contact_form_container">
+                    <div className="contact_form">
+                        <h2><span className="or">S</span>end <span className="or">Us</span> a <span className="or">Mess</span>age</h2>
+                        <form onSubmit={handleSubmit}>
+                            <label htmlFor="name">Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                            />
 
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
 
-                        <label htmlFor="message">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="5"
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            required
-                        ></textarea>
+                            <label htmlFor="message">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                required
+                            ></textarea>
 
-                        <button type="submit" disabled={loading}>
-                            {loading ? 'Sending...' : 'Send Message'}
-                        </button>
-                    </form>
+                            <button type="submit" disabled={loading}>
+                                {loading ? 'Sending...' : 'Send Message'}
+                            </button>
+                        </form>
 
-                    {status && (
-                        <div className={`status_message ${status.type}`}>
-                            {status.message}
-                        </div>
-                    )}
+                        {status && (
+                            <div className={`status_message ${status.type}`}>
+                                {status.message}
+                            </div>
+                        )}
+                    </div>
                 </section>
             </div>
             {loading && <Loader />}
