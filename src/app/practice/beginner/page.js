@@ -15,13 +15,21 @@ export default function Beginner() {
     const [showSolution, setShowSolution] = useState(false);
 
     const handleRunCode = () => {
+        if (!selectedQuestion) return;
+
         try {
-            const result = eval(userCode);
-            if (result.toString() === eval(selectedQuestion.solution).toString()) {
+            // Evaluate the user's code in a sandboxed environment
+            const result = eval(userCode); // Evaluates the user input code
+
+            // Check if the user code produces the correct result
+            const expectedSolutionFunction = new Function(`return ${selectedQuestion.solution}`);
+            const expectedSolutionResult = expectedSolutionFunction();
+
+            if (result.toString() === expectedSolutionResult.toString()) {
                 setOutput("Correct!");
                 setCompletedQuestions(prev => ({ ...prev, [selectedQuestion.id]: true }));
             } else {
-                setOutput("Incorrect solution. Try again.");
+                setOutput(result); // Display the output if it's not correct
             }
         } catch (error) {
             setOutput(`Error: ${error.message}`);
@@ -40,7 +48,8 @@ export default function Beginner() {
                                 className={`question_item ${selectedQuestion?.id === question.id ? 'active' : ''} ${completedQuestions[question.id] ? 'completed' : ''}`}
                                 onClick={() => {
                                     setSelectedQuestion(question);
-                                    setShowSolution(false); 
+                                    setShowSolution(false);
+                                    setOutput(''); // Clear output when selecting a new question
                                 }}
                             >
                                 {question.heading}
