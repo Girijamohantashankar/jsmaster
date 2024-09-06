@@ -2,11 +2,12 @@
 import { useState } from 'react';
 import "../../../../styles/beginner.css";
 import HomeNavbar from "../../home-navbar/page";
+import MonacoEditor from '../../CodeEditor/page';
 
 export default function Beginner() {
     const [questions, setQuestions] = useState([
-        { id: 1, heading: "Array Sort", statement: "Write a function to sort an array of numbers.", solution: "arr.sort((a, b) => a - b)" },
-        { id: 2, heading: "Sum of Numbers", statement: "Write a function to sum all numbers in an array.", solution: "arr.reduce((a, b) => a + b, 0)" },
+        { id: 1, heading: "Array Sort", statement: "Write a function to sort an array of numbers.", solution: "function sortArray(arr) { return arr.sort((a, b) => a - b); }" },
+        { id: 2, heading: "Sum of Numbers", statement: "Write a function to sum all numbers in an array.", solution: "function sumArray(arr) { return arr.reduce((a, b) => a + b, 0); }" },
     ]);
     const [selectedQuestion, setSelectedQuestion] = useState(null);
     const [userCode, setUserCode] = useState('');
@@ -18,18 +19,17 @@ export default function Beginner() {
         if (!selectedQuestion) return;
 
         try {
-            // Evaluate the user's code in a sandboxed environment
-            const result = eval(userCode); // Evaluates the user input code
+            const userFunction = new Function('arr', userCode);
+            const result = userFunction([3, 1, 4, 2]); 
 
-            // Check if the user code produces the correct result
-            const expectedSolutionFunction = new Function(`return ${selectedQuestion.solution}`);
-            const expectedSolutionResult = expectedSolutionFunction();
+            const expectedFunction = new Function('arr', selectedQuestion.solution);
+            const expectedResult = expectedFunction([3, 1, 4, 2]); 
 
-            if (result.toString() === expectedSolutionResult.toString()) {
+            if (result.toString() === expectedResult.toString()) {
                 setOutput("Correct!");
                 setCompletedQuestions(prev => ({ ...prev, [selectedQuestion.id]: true }));
             } else {
-                setOutput(result); // Display the output if it's not correct
+                setOutput(`Incorrect. Output: ${result}`);
             }
         } catch (error) {
             setOutput(`Error: ${error.message}`);
@@ -49,7 +49,7 @@ export default function Beginner() {
                                 onClick={() => {
                                     setSelectedQuestion(question);
                                     setShowSolution(false);
-                                    setOutput(''); // Clear output when selecting a new question
+                                    setOutput('');
                                 }}
                             >
                                 {question.heading}
@@ -69,13 +69,7 @@ export default function Beginner() {
                             </div>
                             <p>{selectedQuestion.statement}</p>
                             {showSolution && <pre className="solution_code">{selectedQuestion.solution}</pre>}
-                            <textarea
-                                value={userCode}
-                                onChange={(e) => setUserCode(e.target.value)}
-                                placeholder="Write your solution here..."
-                                rows={10}
-                            />
-                            <button className="button" onClick={handleRunCode}>Run</button>
+                            <MonacoEditor code={userCode} setCode={setUserCode} onRunCode={handleRunCode} />
                             <div className="output">{output}</div>
                         </>
                     ) : (
