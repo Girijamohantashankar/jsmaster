@@ -75,6 +75,7 @@ export default function Navbar() {
                 <Link href="/home">JSMaster</Link>
             </div>
             <ul className={`navbar-links ${isMobileMenuOpen ? "active" : ""}`}>
+                <li><Link href="/home" className={isActiveLink("/home")}>Home</Link></li>
                 <li><Link href="/blog" className={isActiveLink("/blog")}>Blog</Link></li>
                 <li><Link href="/community" className={isActiveLink("/community")}>Community</Link></li>
                 <li><Link href="/contact" className={isActiveLink("/contact")}>Contact Us</Link></li>
