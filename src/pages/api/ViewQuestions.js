@@ -8,7 +8,8 @@ export default async function handler(req, res) {
         const { userEmail } = req.body;
         console.log(userEmail, 'userEmailuserEmail');
 
-        const post = await Post.findOne({ userEmail }); // Use findOne to get a single document
+        const post = await Post.findOne({ userEmail });
+
 
         if (post) {
             console.log(post.solvedQuestionIds, 'Solved Question IDs');

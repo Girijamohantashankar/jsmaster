@@ -4,6 +4,8 @@ import "../../../../styles/beginner.css";
 import HomeNavbar from "../../home-navbar/page";
 import MonacoEditor from '../../CodeEditor/page';
 import { getUserEmailFromToken } from '../../authUtils';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Beginner() {
     const [selectedQuestion, setSelectedQuestion] = useState(null);
@@ -12,11 +14,9 @@ export default function Beginner() {
     const [completedQuestions, setCompletedQuestions] = useState({});
     const [showSolution, setShowSolution] = useState(false);
     const [userEmail, setUserEmail] = useState('');
-    const [Qcolor, setQcolor] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [questionCount, setQuestionCount] = useState(0);
 
-
-
-    
     const questions = [
         {
             id: 1,
@@ -42,15 +42,19 @@ export default function Beginner() {
                 { input: [5, 10, 15], expected: 30 }
             ]
         },
+
     ];
 
     useEffect(() => {
         const email = getUserEmailFromToken();
         setUserEmail(email);
-        viewSolvedQuestion(userEmail)
     }, []);
 
-
+    useEffect(() => {
+        if (userEmail) {
+            viewSolvedQuestions(userEmail);
+        }
+    }, [userEmail]);
 
     const handleRunCode = () => {
         if (!selectedQuestion) return;
@@ -72,7 +76,7 @@ export default function Beginner() {
 
             if (allTestsPassed) {
                 setOutput("Correct! Problem solved.");
-                saveSolvedQuestion(selectedQuestion.id); 
+                saveSolvedQuestion(selectedQuestion.id);
             }
         } catch (error) {
             setOutput(`Error: ${error.message}`);
@@ -80,11 +84,7 @@ export default function Beginner() {
     };
 
     const handleViewSolution = () => {
-        if (showSolution) {
-            setUserCode('');
-        } else {
-            setUserCode(selectedQuestion.solution);
-        }
+        setUserCode(showSolution ? '' : selectedQuestion.solution);
         setShowSolution(!showSolution);
     };
 
@@ -106,7 +106,6 @@ export default function Beginner() {
             });
 
             if (!response.ok) {
-                // Handle non-200 responses
                 console.error('Network response was not ok:', response.statusText);
                 return;
             }
@@ -123,37 +122,34 @@ export default function Beginner() {
         }
     };
 
-    const viewSolvedQuestion = async (userEmail) => {
-    
+    const viewSolvedQuestions = async (userEmail) => {
         try {
-            console.log(userEmail);
-            
+            setIsLoading(true);
             const response = await fetch('/api/ViewQuestions', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userEmail })
             });
-    
+
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-    
+
             const data = await response.json();
-            console.log(data, 'Fetched solved questions');
-    
+
             if (data.data && Array.isArray(data.data)) {
-                // Convert array to an object for easier state management
                 const solvedQuestions = data.data.reduce((acc, id) => ({ ...acc, [id]: true }), {});
                 setCompletedQuestions(solvedQuestions);
+                setQuestionCount(data.data.length);
             } else {
                 console.error('No solved questions data found:', data.error);
             }
         } catch (error) {
             console.error('Error fetching solved questions:', error);
+        } finally {
+            setIsLoading(false);
         }
     };
-    
-
 
     return (
         <>
@@ -161,20 +157,36 @@ export default function Beginner() {
             <div className="beginner_container">
                 <div className="questions_list">
                     <ul>
-                        {questions.map((question) => (
-                            <li
-                                key={question.id}
-                                className={`question_item ${selectedQuestion?.id === question.id ? 'active' : ''} ${Qcolor ? 'completed' : ''}`}
-                                onClick={() => handleQuestionClick(question)}
-                            >
-                                {question.heading}
-                                {completedQuestions[question.id] && <i className="fas fa-check-circle check_icon"></i>}
-                            </li>
-                        ))}
+                        {isLoading ? (
+                            <SkeletonTheme color="#cfcfcf" highlightColor="#e0e0e0">
+                                {[...Array(questionCount || 3)].map((_, i) => ( 
+                                    <li key={i}>
+                                        <Skeleton height={24} width={`80%`} />
+                                    </li>
+                                ))}
+                            </SkeletonTheme>
+                        ) : (
+                            questions.map((question) => (
+                                <li
+                                    key={question.id}
+                                    onClick={() => handleQuestionClick(question)}
+                                    className={`${completedQuestions[question.id] ? 'completed' : ''}`}
+                                >
+                                    {question.heading}
+                                    {completedQuestions[question.id] && <span className="check-icon">✔</span>}
+                                </li>
+                            ))
+                        )}
                     </ul>
                 </div>
                 <div className="question_details">
-                    {selectedQuestion ? (
+                    {isLoading ? (
+                        <SkeletonTheme color="#cfcfcf" highlightColor="#e0e0e0">
+                            <Skeleton height={30} width={`80%`} style={{ marginBottom: '10px' }} />
+                            <Skeleton height={20} width={`60%`} style={{ marginBottom: '10px' }} />
+                            <Skeleton height={200} />
+                        </SkeletonTheme>
+                    ) : selectedQuestion ? (
                         <>
                             <div className="question_header">
                                 <h2>{selectedQuestion.heading}</h2>
