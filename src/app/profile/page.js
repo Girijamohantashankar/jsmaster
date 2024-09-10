@@ -3,29 +3,49 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import "../../../styles/profile.css";
 import HomeNavbar from "../home-navbar/page";
+import { getUserEmailFromToken } from '../authUtils';
 
 export default function ProfilePage() {
     const [user, setUser] = useState({
-        name: '',
+        username: '',
         email: '',
-        profilePicture: '/assets/default_profile.png',
-        bio: '',
+        profilePicture: '/assets/default_profile.jfif',
+        phone: '',
     });
     const [editing, setEditing] = useState(false);
     const [formData, setFormData] = useState({ ...user });
 
     useEffect(() => {
         const fetchUserData = async () => {
-            const fetchedUser = {
-                name: 'John Doe',
-                email: 'john.doe@example.com',
-                profilePicture: '/assets/default_profile.png',
-                bio: 'A short bio about John Doe',
-            };
-            setUser(fetchedUser);
-            setFormData(fetchedUser);
+            const email = getUserEmailFromToken();
+            if (!email) {
+                console.error('User email not found');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/profile?email=${email}`);
+                const fetchedUser = await response.json();
+
+                if (response.ok) {
+                    setUser({
+                        ...user,
+                        ...fetchedUser,
+                        profilePicture: fetchedUser.profilePicture || '/assets/default_profile.jfif',
+                    });
+                    setFormData({
+                        ...formData,
+                        ...fetchedUser,
+                        profilePicture: fetchedUser.profilePicture || '/assets/default_profile.jfif',
+                    });
+                } else {
+                    console.error(fetchedUser.message);
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
         };
-        
+
         fetchUserData();
     }, []);
 
@@ -55,6 +75,7 @@ export default function ProfilePage() {
                             width={150}
                             height={150}
                             className="profile_img"
+                            unoptimized={true}
                         />
                     </div>
                     <div className="profile_info">
@@ -62,23 +83,30 @@ export default function ProfilePage() {
                             <>
                                 <input
                                     type="text"
-                                    name="name"
-                                    value={formData.name}
+                                    name="username"
+                                    value={formData.username}
                                     onChange={handleChange}
                                     className="profile_input"
                                 />
-                                <textarea
-                                    name="bio"
-                                    value={formData.bio}
+                                <input
+                                    name="email"
+                                    value={formData.email}
                                     onChange={handleChange}
-                                    className="profile_textarea"
+                                    className="profile_input"
+                                />
+                                <input
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    className="profile_input"
                                 />
                             </>
                         ) : (
                             <>
-                                <h2>{user.name}</h2>
+                                <h2>{user.username}</h2>
                                 <p>{user.email}</p>
-                                <p>{user.bio}</p>
+                                <p>{user.phone}</p>
+                                <p>{user.gender}</p>
                             </>
                         )}
                         <button onClick={editing ? handleSave : handleEdit} className="profile_button">

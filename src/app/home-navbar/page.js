@@ -83,7 +83,7 @@ export default function Navbar() {
                     <span className="user-initial">{userInitial}</span>
                     <div className={`dropdown-menu ${isDropdownOpen ? "open" : ""}`}>
                         <Link href="/profile">Profile</Link>
-                        <Link href="/settings">Settings</Link>
+                        <Link href="/dashboard">Dashboard</Link>
                         <button onClick={handleLogout}>Logout</button>
                     </div>
                 </li>
